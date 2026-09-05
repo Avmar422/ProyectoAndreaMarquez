@@ -27,6 +27,11 @@ const crearMiembro = (req, res) => {
         return res.status(400).json({ error: "El nombre es obligatorio" });
     }
 
+    const esSoloNumeros = /^\d+$/.test(nombre);
+    if (esSoloNumeros) {
+        return res.status(400).json({ error: "El nombre no puede contener únicamente números" });
+    }
+
     const planesValidos = ["Basico", "Estándar", "Premium"];
     if (!planesValidos.includes(plan)) {
         return res.status(400).json({ error: `Plan inválido. Los planes permitidos son: ${planesValidos.join(", ")}` });
