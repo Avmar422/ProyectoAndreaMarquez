@@ -24,7 +24,7 @@ const obtenerMiembroPorId = (req, res) => {
 const crearMiembro = (req, res) => {
     const { nombre, plan, tiempoSuscripcion } = req.body;
     if (!nombre || !plan) {
-        return res.status(400).json({ error: "El nombre es obligatorios" });
+        return res.status(400).json({ error: "El nombre es obligatorio" });
     }
 
     const planesValidos = ["Basico", "Estándar", "Premium"];
