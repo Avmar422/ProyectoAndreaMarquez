@@ -5,7 +5,7 @@ const contenedorCards = document.querySelector("#contenedor-card");
 botonList.addEventListener("click", async () => {
 
     try {
-        const respuesta = await fetch("https://jsonplaceholder.typicode.com/users");
+        const respuesta = await fetch("http://localhost:3000/api/miembros");
         const listaUsuarios = await respuesta.json();
 
         botonList.style.display = "none";
@@ -19,9 +19,10 @@ botonList.addEventListener("click", async () => {
             tarjeta.classList.add("tarjeta-usuario");
 
             tarjeta.innerHTML = `
-                <h3>Usuario: ${usuario.name}</h3>
-                <p>Correo: ${usuario.email}</p>
-            `;
+                <h3>Usuario: ${usuario.nombre}</h3>
+                <p>Plan: ${usuario.plan}</p>
+                <p>Suscripción: ${usuario.tiempoSuscripcion}</p>
+                `;
             contenedorCards.appendChild(tarjeta);
         }
 
