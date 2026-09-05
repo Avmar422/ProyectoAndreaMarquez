@@ -19,9 +19,10 @@ botonList.addEventListener("click", async () => {
             tarjeta.classList.add("tarjeta-usuario");
 
             tarjeta.innerHTML = `
-                <h3>Usuario: ${usuario.name}</h3>
-                <p>Correo: ${usuario.email}</p>
-            `;
+                <h3>Usuario: ${usuario.nombre}</h3>
+                <p>Plan: ${usuario.plan}</p>
+                <p>Suscripción: ${usuario.tiempoSuscripcion}</p>
+                `;
             contenedorCards.appendChild(tarjeta);
         }
 
