@@ -1,6 +1,6 @@
 let miembros = [
-    { id: 1, nombre: "Christopher Nolan", plan: "5$", tiempoSuscripcion: "4 meses" },
-    { id: 2, nombre: "Cillian Murphy", plan: "50$", tiempoSuscripcion: "1 año" }
+    { id: 1, nombre: "Christopher Nolan", plan: "Premium", tiempoSuscripcion: "4 meses" },
+    { id: 2, nombre: "Cillian Murphy", plan: "Basico", tiempoSuscripcion: "1 año" }
 ];
 
 const obtenerMiembros = (req, res) => {
@@ -26,6 +26,12 @@ const crearMiembro = (req, res) => {
     if (!nombre || !plan) {
         return res.status(400).json({ error: "El nombre y el plan son obligatorios" });
     }
+
+    const planesValidos = ["Basico", "Estándar", "Premium"];
+    if (!planesValidos.includes(plan)) {
+        return res.status(400).json({ error: `Plan inválido. Los planes permitidos son: ${planesValidos.join(", ")}` });
+    }
+
     const nuevoMiembro = {
         id: miembros.length > 0 ? miembros[miembros.length - 1].id + 1 : 1,
         nombre,
